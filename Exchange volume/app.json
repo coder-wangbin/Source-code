@@ -1,0 +1,17 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/myrelease/myrelease",
+        "pages/info/info",
+        "pages/add/add",
+        "pages/mine/mine",
+        "pages/logs/logs",
+        "pages/search/serach",
+        "pages/mymessage/mymessage",
+        "pages/phone/phone",
+        "pages/release/release"
+    ],
+    "window": {
+        "navigationStyle": "custom"
+    }
+}

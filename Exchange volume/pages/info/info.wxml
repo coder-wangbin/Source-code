@@ -1,0 +1,150 @@
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px;">
+        <view class="nav-title">
+      信息详情
+      <view>
+                <image bindtap="back" class="back_img_nav" mode="aspectFit" src="/assets/arrow-left-info.png"></image>
+            </view>
+        </view>
+    </view>
+    <scroll-view scrollY class="bg-gray overflow" style="height:calc(100vh - {{navH}}-98px);position:absolute;bottom:98rpx;top:{{navH}}px">
+        <view class="hidden" wx:if="{{allobj&&allobj.target!=''}}">
+            <view class="top_bg"></view>
+            <view class="top_info">
+                <view class="top_info_top">
+                    <image class="icn_01" src="{{allobj.icon}}"></image>
+                    <view class="top_info_center">
+                        <view class="top_info_center_game">{{allobj.name}}</view>
+                        <view class="game">
+                            <view>{{allobj.item}}</view>
+                        </view>
+                    </view>
+                    <image class="img_sell_02" src="{{allobj.target}}"></image>
+                </view>
+                <view class="line"></view>
+                <view class="top_info_bottom">
+          {{desc}}
+        </view>
+            </view>
+            <view class="base_info">
+                <view class="base_info_top" wx:if="{{allobj.new_target!='3'}}">{{allobj.title_bottom_new}}</view>
+                <view class="base_info_top" wx:if="{{allobj.new_target=='3'}}">基础信息</view>
+                <view class="line"></view>
+                <view class="base_info_bottom" wx:if="{{allobj.new_target!='3'}}">
+                    <view class="base_info_bottom_item">
+            {{allobj.title_top_new}}
+          </view>
+                </view>
+                <view class="base_info_bottom" wx:if="{{allobj.new_target=='3'}}">
+                    <view class="base_info_bottom_item huan">
+                        <view class="huanitem">
+                            <view class="dayupdate">日活/DAU:</view>
+                            <view class="dayupdatenum">{{allobj.dau}}W</view>
+                        </view>
+                        <view class="huanitem">
+                            <view class="dayupdate">累积用户:</view>
+                            <view class="dayupdatenum">{{allobj.all_users}}W</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="base_info" wx:if="{{allobj.new_target=='1'}}">
+                <view class="base_info_top">买量方式</view>
+                <view class="line"></view>
+                <view class="base_info_bottom">
+                    <view class="base_info_bottom_item" wx:for="{{allobj.buy_type}}" wx:key="{{allobj.buy_type}}">
+                        <view class="dayupdate">{{index+1}}.</view>
+                        <view class="dayupdatenum">{{item}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="base_info">
+                <view class="base_info_top">
+                    <view>资源联系</view>
+                    <view bindtap="gotomoreabout" data-auth_uid="{{allobj.auth_uid}}" wx:if="{{allobj.auth_uid!=uid&&allobj.is_show_more}}">
+                        <view class="moreabout">他的更多发布></view>
+                    </view>
+                    <view bindtap="gotomoreaboutme" class="moreabout" data-auth_uid="{{allobj.auth_uid}}" data-id="{{uid}}" wx:if="{{allobj.auth_uid==uid&&allobj.is_show_more}}">
+                        <view>我的更多发布></view>
+                    </view>
+                </view>
+                <view class="line"></view>
+                <view class="base_info_bottom">
+                    <view class="base_info_bottom_item" wx:if="{{allobj.nickName&&allobj.nickName!=''}}">
+                        <view class="dayupdate">联系人：</view>
+                        <view>{{allobj.nickName}}</view>
+                    </view>
+                    <view class="base_info_bottom_item">
+                        <view class="dayupdate">联系方式：</view>
+                        <view>{{allobj.phone}}</view>
+                        <view bindtap="copy" class="copy">复制</view>
+                    </view>
+                    <view class="base_info_bottom_item">
+                        <view class="dayupdate">公司名称：</view>
+                        <view>{{allobj.company_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="base_info base_info_erweima">
+                <view class="base_info_top">小程序码</view>
+                <view class="line"></view>
+                <view class="base_info_bottom_item">
+                    <image bindtap="sharefriend" class="erweima" data-src="{{allobj.qcode}}" src="{{allobj.qcode}}"></image>
+                </view>
+            </view>
+        </view>
+        <view class="hidden" wx:if="{{allobj&&allobj.target==''}}">
+            <view class="top_bg"></view>
+            <view class="base_info">
+                <view class="base_info_top">
+                    <view>资源联系</view>
+                    <view bindtap="gotomoreabout" class="moreabout" data-auth_uid="{{allobj.auth_uid}}" wx:if="{{allobj.auth_uid!=uid&&allobj.is_show_more}}">他的更多发布></view>
+                    <view bindtap="gotomoreaboutme" class="moreabout" data-auth_uid="{{allobj.auth_uid}}" data-id="{{allobj.logid}}" wx:if="{{allobj.auth_uid==uid&&allobj.is_show_more}}">我的更多发布></view>
+                </view>
+                <view class="line"></view>
+                <view class="base_info_bottom">
+                    <view class="base_info_bottom_item" wx:if="{{allobj.nickName&&allobj.nickName!=''}}">
+                        <view class="dayupdate">联系人：</view>
+                        <view>{{allobj.nickName}}</view>
+                    </view>
+                    <view class="base_info_bottom_item">
+                        <view class="dayupdate">联系方式：</view>
+                        <view>{{allobj.phone}}</view>
+                        <view bindtap="copy" class="copy">复制</view>
+                    </view>
+                    <view class="base_info_bottom_item">
+                        <view class="dayupdate">公司名称：</view>
+                        <view>{{allobj.company_name}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="base_info base_info_erweima">
+                <view class="base_info_top">需求描述</view>
+                <view class="line"></view>
+                <view class="base_info_bottom_item">
+                    <view>{{allobj.describe_text}}</view>
+                </view>
+            </view>
+            <view class="base_info base_info_erweima" wx:if="{{allobj.images!=''&&allobj.images!=null}}">
+                <view class="base_info_top">需求图示</view>
+                <view class="line"></view>
+                <view class="base_info_bottom_item base_info_bottom_item_imag">
+                    <image bindtap="sharefriend" class="otherimage" data-src="{{item}}" src="{{item}}" wx:for="{{allobj.images}}" wx:key="{{allobj.images}}"></image>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="bottom_info" wx:if="{{allobj}}">
+        <view class="bottom_info_item">
+            <image src="/assets/icn_share.png"></image>
+            <view>分享好友</view>
+            <button openType="share"></button>
+        </view>
+        <view class="bottom_info_line"></view>
+        <view bindtap="collect" class="bottom_info_item">
+            <image src="{{allobj.is_collection?'/assets/icn_add_after.png':'/assets/icn_add_before.png'}}"></image>
+            <view wx:if="{{!allobj.is_collection}}">加入收藏</view>
+            <view wx:if="{{allobj.is_collection}}">已收藏</view>
+        </view>
+    </view>
+</view>

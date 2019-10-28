@@ -1,0 +1,90 @@
+.container {
+    background: #f4f4f8;
+}
+
+.top {
+    height: 110rpx;
+    margin: 30rpx 30rpx 20rpx;
+    width: 630rpx;
+    display: flex;
+    padding: 0 30rpx;
+    background: #fff;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 28rpx;
+    color: rgb(51,51,51);
+    position: relative;
+}
+
+.top_item {
+    margin: 0 30rpx;
+}
+
+.toux {
+    width: 70rpx;
+    height: 70rpx;
+    border-radius: 50%;
+}
+
+.top_left {
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.xinghao {
+    color: rgb(210,26,18);
+    margin-right: 15rpx;
+    padding-top: 10rpx;
+}
+
+.line {
+    width: 92.5%;
+    height: 1rpx;
+    background: #e9e8ec;
+    position: absolute;
+    left: 33rpx;
+    top: 0;
+}
+
+input {
+    text-align: right;
+}
+
+.bindbottom {
+    height: 90rpx;
+    width: 690rpx;
+    padding: 20rpx 30rpx;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.bindbottom_button {
+    background: rgb(210,26,18);
+    box-shadow: 0 5rpx 15rpx 0rpx rgba(210,26,18,0.15);
+    border-radius: 45rpx;
+    color: #fff;
+    height: 90rpx;
+    line-height: 90rpx;
+    width: 690rpx;
+    font-size: 32rpx;
+}
+
+.submitcolor {
+    color: #666;
+    background: #efeff4;
+}
+
+.tel {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.submitcolor {
+    color: #666;
+    background: #efeff4;
+}

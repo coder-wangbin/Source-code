@@ -1,0 +1,86 @@
+<import src="../../common/toBar.wxml"></import>
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px;">
+        <view class="nav-title">
+      {{navfont}}
+      <image bindtap="gotoindex" class="back_img_nav" lazyLoad="true" mode="aspectFit" src="/assets/arrow-left-info.png" wx:if="{{navfont!='个人中心'}}"></image>
+        </view>
+    </view>
+    <scroll-view scrollY class="bg-gray overflow" style="height:calc(100vh - {{navH}}-98px);position:absolute;bottom:98rpx;top:{{navH}}px">
+        <view class="hidden" wx:if="{{iv}}">
+            <view class="top_bg"></view>
+            <view class="top_info">
+                <view class="toux_bg">
+                    <image class="toux" src="{{mymessage.avatarUrl}}"></image>
+                </view>
+                <view class="top_info_center">
+                    <view class="nickName">
+                        <view class="nickName_name">{{mymessage.nickName}}</view>
+                        <view class="number">ID：{{mymessage.user_id}}</view>
+                    </view>
+                    <view bindtap="{{mymessage.is_authentication==0?'gotobindpone':''}}" class="img_v_01_bg">
+                        <image class="img_v_01" src="{{mymessage.is_authentication==1?'/assets/img_v_01.png':'/assets/img_v_02.png'}}"></image>
+                        <view class="img_v_01_font" wx:if="{{mymessage.is_authentication==1}}">已认证</view>
+                        <view class="img_v_01_font" wx:if="{{mymessage.is_authentication==0}}">去认证
+              <text>></text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view bindtap="gotomymessage" class="message" style="border-radius: 20rpx 20rpx  0 0;">
+                <view class="message_left">
+                    <image class="btn_me_information" src="/assets/btn_me_information.png"></image>
+                    <view>个人信息</view>
+                </view>
+                <view class="message_left">
+                    <view class="perfect" wx:if="{{mymessage.perfect==1}}">已完善</view>
+                    <view class="perfect" style="color:rgb(210,26,18)" wx:if="{{mymessage.perfect==0}}">未完善</view>
+                    <image class="btn_arrow_black" src="/assets/btn_arrow_black.png"></image>
+                </view>
+            </view>
+            <view bindtap="gotorelease" class="message">
+                <view class="message_left">
+                    <image class="btn_me_information" src="/assets/btn_me_publish.png" style="width:36rpx;height:32rpx"></image>
+                    <view>
+                        <view>
+              我的发布
+            </view>
+                        <view class="dot_tar_mine" wx:if="{{mymessage.unread==1}}"></view>
+                    </view>
+                </view>
+                <view class="message_left">
+                    <image class="btn_arrow_black" src="/assets/btn_arrow_black.png"></image>
+                </view>
+            </view>
+            <view bindtap="gotologs" class="message" style="border-radius: 0 0  20rpx 20rpx;">
+                <view class="message_left">
+                    <image class="btn_me_information" src="/assets/btn_me_collect.png" style="width:36rpx;height:36rpx"></image>
+                    <view>我的收藏</view>
+                </view>
+                <view class="message_left">
+                    <image class="btn_arrow_black" src="/assets/btn_arrow_black.png"></image>
+                </view>
+            </view>
+            <view class="concactlist">
+                <view class="concactlist_item" wx:for="{{concact}}" wx:key="{{concact}}">
+                    <image class="btn_me_group" src="{{item.src}}"></image>
+                    <button class="btn_me_group_button btn_me_group" openType="{{item.id==1?'share':'contact'}}" sendMessageImg="/assets/concat.jpg" sendMessageTitle="你想要的卖量、换量资源，都在这里" showMessageCard="true"></button>
+                </view>
+            </view>
+            <view class="mine_bottom">
+                <view class="mine_bottom_top">- 温馨提醒 -</view>
+                <view class="mine_bottom_bottom">
+                    <view>本应用仅提供信息交流， 不对任何交易承担责任</view>
+                    <view>如涉及金钱交易， 请在核查对方信息后再进行</view>
+                </view>
+            </view>
+        </view>
+        <view class="hidden hidden_login" wx:if="{{!iv&&falg}}">
+            <image class="img_authorization" src="/assets/img_authorization.png"></image>
+            <view class="login_font">允许微信授权，即刻体验更多功能哦</view>
+            <button bindgetuserinfo="getUserInfo" class="login" openType="getUserInfo">授权登录</button>
+            <button bindtap="gotoindex" class="backindex">返回首页</button>
+        </view>
+    </scroll-view>
+    <template is="tabbar" data="{{tabbar:tabbar}}" wx:if="{{iv}}"></template>
+</view>

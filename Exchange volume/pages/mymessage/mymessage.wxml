@@ -1,0 +1,61 @@
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px;">
+        <view class="nav-title">
+      个人信息
+      <image bindtap="back" class="back_img_nav" mode="aspectFit" src="/assets/arrow-left.png"></image>
+        </view>
+    </view>
+    <scroll-view scrollY class="bg-gray" style="height:calc(100vh - {{navH}});position:absolute;bottom:0;top:{{navH}}px">
+        <view class="hidden" wx:if="{{mymessage}}">
+            <view class="top" style="border-radius: 10rpx;">
+                <view>头像</view>
+                <image class="toux" src="{{mymessage.avatarUrl}}"></image>
+            </view>
+            <view class="top top_item" style="border-radius: 10rpx 10rpx 0 0;">
+                <view class="top_left">
+                    <view class="xinghao">*</view>
+                    <view>联系人昵称</view>
+                </view>
+                <view>
+                    <input bindblur="submitname" placeholderStyle="color:rgb(153,153,153)" value="{{nickName}}"></input>
+                </view>
+            </view>
+            <view class="top top_item">
+                <view class="top_left" style="width:100%;">
+                    <view class="line"></view>
+                    <view class="xinghao">*</view>
+                    <view class="tel">
+                        <view>手机号码</view>
+                        <view style="color:rgb(210,26,18)" wx:if="{{mymessage.is_authentication==0||tel!=backmobile}}">（未认证）</view>
+                        <view style="color:rgb(153,153,153)" wx:if="{{mymessage.is_authentication==1&&tel==backmobile}}">（已认证）</view>
+                    </view>
+                </view>
+                <view>
+                    <input bindblur="submitmobile" bindinput="submittel" placeholder="请输入手机号" placeholderStyle="color:rgb(153,153,153)" value="{{mobile}}"></input>
+                </view>
+            </view>
+            <view class="top top_item">
+                <view class="top_left">
+                    <view class="line"></view>
+                    <view class="xinghao">*</view>
+                    <view>公司名称</view>
+                </view>
+                <view>
+                    <input bindblur="submitcompany" placeholder="请输入具体名称" placeholderStyle="color:rgb(153,153,153)" value="{{company}}"></input>
+                </view>
+            </view>
+            <view class="top top_item" style="border-radius: 0 0 10rpx 10rpx;">
+                <view class="top_left">
+                    <view class="line"></view>
+                    <view>职位</view>
+                </view>
+                <view>
+                    <input bindblur="submitjob" placeholder="请输入你的职位" placeholderStyle="color:rgb(153,153,153)" value="{{job}}"></input>
+                </view>
+            </view>
+            <view class="bindbottom">
+                <button bindtap="submit" class="bindbottom_button {{submitcomplete?'submitcolor':''}}">保存修改</button>
+            </view>
+        </view>
+    </scroll-view>
+</view>

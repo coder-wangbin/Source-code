@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "一元夺宝222",
+  "usingComponents": {
+    "xm-ad": "/components/xmAD/xmAD"
+  }
+}

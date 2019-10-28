@@ -1,0 +1,60 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/logs/logs",
+    "pages/open/open",
+    "pages/xmadPage/sell",
+    "pages/xmadPage/collect",
+    "pages/index/index",
+    "pages/xmadPage/copyInfo"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "一元夺宝",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#888989",
+    "selectedColor": "#da3751",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "夺宝",
+        "pagePath": "pages/home/home",
+        "iconPath": "resources/images/ic_home.png",
+        "selectedIconPath": "resources/images/ic_home_selected.png"
+      },
+      {
+        "text": "开奖",
+        "pagePath": "pages/logs/logs",
+        "iconPath": "resources/images/ic_win.png",
+        "selectedIconPath": "resources/images/ic_win_selected.png"
+      },
+      {
+        "text": "清单",
+        "pagePath": "pages/open/open",
+        "iconPath": "resources/images/ic_listing.png",
+        "selectedIconPath": "resources/images/ic_listing_selected.png"
+      },
+      {
+        "text": "我",
+        "pagePath": "pages/index/index",
+        "iconPath": "resources/images/ic_user.png",
+        "selectedIconPath": "resources/images/ic_user_selected.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "navigateToMiniProgramAppIdList": [
+    "wxd53caf6b2ceb1fbb",
+    "wxe9c87ae2191b6309",
+    "wx8a602df9f1460566",
+    "wx5f744b0afd07fc14"
+  ]
+}

@@ -1,0 +1,157 @@
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px;">
+        <view class="nav-title">
+      {{navfont}}
+      <image bindtap="back" class="back_img_nav" mode="aspectFit" src="/assets/arrow-left.png"></image>
+        </view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="worldOnReach1" class="bg-gray overflow" style="height:calc(100vh - {{navH}});position:absolute;bottom:0;top:{{navH}}px">
+        <view class="hidden" wx:if="{{navfont=='他的发布'}}">
+            <view class="middle">
+                <view class="bottom">
+                    <view bindtap="gotoinfo" class="list_bottom" data-id="{{item.id}}" data-uid="{{item.auth_uid}}" wx:for="{{list}}" wx:key="{{list}}">
+                        <view class="icn_01_one" wx:if="{{item.target!=''}}">
+                            <image class="icn_01_one" src="{{item.icon}}"></image>
+                            <image class="img_v_01_authentication" src="/assets/img_v_01.png" wx:if="{{item.is_authentication==1}}"></image>
+                        </view>
+                        <view class="list_bottom_top" wx:if="{{item.target!=''}}">
+                            <view class="list_bottom_name">
+                                <view class="list_bottom_name_list">
+                                    <view class="list_bottom_name_game">{{item.name}}</view>
+                                    <view style="width:30rpx">
+                                        <image class="img_sell_01" src="{{item.target}}"></image>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="list_bottom_type">
+                                <view>{{item.item}}</view>
+                            </view>
+                            <view class="list_bottom_info">了解详情
+                <text style="margin-elft:10rpx">></text>
+                            </view>
+                        </view>
+                        <view class="list_bottom_right {{item.new_target==3?'right_flex':''}}" wx:if="{{item.target!=''}}">
+                            <view class="list_bottom_right_num">{{item.title_top_new}}</view>
+                            <view class="list_bottom_right_day">{{item.title_bottom_new}}</view>
+                        </view>
+                        <view class="line"></view>
+                        <view wx:if="{{item.target==''}}">
+                            <view class="otherlist_bottom_list_item">
+                                <view>{{item.company_name}}</view>
+                                <image class="img_v_01_authentication" src="/assets/img_v_01.png" wx:if="{{item.is_authentication==1}}"></image>
+                                <view class="otherlist_bottom_list_time">{{item.create_time}}</view>
+                            </view>
+                            <view class="connection">
+                                <view>联 系 人：</view>
+                                <view class="nickName">{{item.nickName}}</view>
+                            </view>
+                            <view class="connection tel">
+                                <view>联系电话：</view>
+                                <view class="nickName">{{item.phone}}</view>
+                            </view>
+                            <view class="otherdec">
+                                <view class="otherdec_bg">
+                  {{item.describe_text}}
+                </view>
+                                <view class="demand_substr2" style="color:rgb(210,26,18)">需求详情></view>
+                            </view>
+                        </view>
+                        <form bindsubmit="formSubmit" class="button_bototm_center" reportSubmit="true">
+                            <button class="button_bototm_center" formType="submit"></button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+            <view class="no_search" wx:if="{{list==''}}">
+                <image class="img_nothing" src="/assets/img_nothing.png"></image>
+                <view>没有更多了</view>
+            </view>
+        </view>
+        <view class="hidden" wx:if="{{navfont=='我的发布'}}">
+            <view class="middle">
+                <view class="bottom">
+                    <view class="list_bottom" wx:for="{{list}}" wx:key="{{list}}">
+                        <view class="icn_01_one" wx:if="{{item.target!=''}}">
+                            <image class="icn_01_one" src="{{item.icon}}"></image>
+                            <image class="img_v_01_authentication" src="/assets/img_v_01.png" wx:if="{{item.is_authentication==1}}"></image>
+                        </view>
+                        <view bindtap="gotoinfo" class="list_bottom_top" data-id="{{item.id}}" data-uid="{{item.auth_uid}}" wx:if="{{item.target!=''}}">
+                            <view class="list_bottom_name">
+                                <view class="list_bottom_name_list">
+                                    <view class="list_bottom_name_game">{{item.name}}</view>
+                                    <view style="width:30rpx">
+                                        <image class="img_sell_01" src="{{item.target}}"></image>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="list_bottom_type">
+                                <view>{{item.type}}</view>
+                            </view>
+                            <view class="list_bottom_info">
+                                <view class="list_bottom_info_item" wx:for="{{item.my_release}}" wx:key="{{item.my_release}}">
+                                    <view wx:if="{{item!=''}}">{{item}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="list_bottom_right_state" wx:if="{{item.target!=''}}">
+                            <view class="state" style="letter-spacing:2rpx" wx:if="{{item.state==1}}">已发布</view>
+                            <view class="state" style="color:rgb(237,122,50);letter-spacing:2rpx" wx:if="{{item.state==0}}">审核中</view>
+                            <view class="state" style="color:rgb(210,26,18)" wx:if="{{item.state==2}}">审核失败</view>
+                            <view class="btn_delete_black_bg">
+                                <image catchtap="del" class="btn_delete_black" data-id="{{item.id}}" src="/assets/btn_delete_black.png"></image>
+                                <image catchtap="edit" class="btn_delete_black" data-id="{{item.id}}" src="/assets/btn_edit.png"></image>
+                            </view>
+                        </view>
+                        <view bindtap="gotoinfo" data-id="{{item.id}}" data-uid="{{item.auth_uid}}" wx:if="{{item.target==''}}">
+                            <view class="otherlist_bottom_list_item">
+                                <image class="img_v_01_authentication" src="/assets/img_v_01.png" wx:if="{{item.is_authentication==1}}"></image>
+                                <view>{{item.company_name}}
+                </view>
+                                <view class="state" wx:if="{{item.state==1}}">已发布</view>
+                                <view class="state" style="color:rgb(237,122,50)" wx:if="{{item.state==0}}">审核中</view>
+                                <view class="state" style="color:rgb(210,26,18)" wx:if="{{item.state==2}}">审核失败</view>
+                            </view>
+                            <view class="connection">
+                                <view>联 系 人：</view>
+                                <view class="nickName">{{item.nickName}}</view>
+                            </view>
+                            <view class="connection tel">
+                                <view>联系电话：</view>
+                                <view class="nickName">{{item.phone}}</view>
+                            </view>
+                            <view class="otherdec">
+                                <view>{{item.describe_text}}</view>
+                            </view>
+                            <view class="btn_delete_black_bg">
+                                <view></view>
+                                <view class="btn_delete_black_bg other_btn_delete_black_bg ">
+                                    <image catchtap="del" class="btn_delete_black" data-id="{{item.id}}" src="/assets/btn_delete_black.png"></image>
+                                    <image catchtap="edit" class="btn_delete_black" data-id="{{item.id}}" src="/assets/btn_edit.png"></image>
+                                </view>
+                            </view>
+                        </view>
+                        <view class="line"></view>
+                    </view>
+                </view>
+            </view>
+            <view class="no_search" wx:if="{{list==''}}">
+                <image class="img_nothing" src="/assets/img_nothing.png"></image>
+                <view>空空如也~</view>
+                <button bindtap="gotoadd">去添加</button>
+            </view>
+        </view>
+        <view class="img_WeChat_toast {{toast}}"></view>
+        <view class="img_WeChat_toast_white {{toast}}">
+            <view class="img_WeChat_toast_white_bg">
+                <view class="img_WeChat_toast_white_top">
+                    <view>您是否确定要移除该条发布？
+          </view>
+                </view>
+                <view class="img_WeChat_toast_white_bottom">
+                    <view bindtap="cancel">取消</view>
+                    <view bindtap="sure" data-id="{{id}}">确定</view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

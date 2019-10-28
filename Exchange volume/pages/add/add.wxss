@@ -1,0 +1,490 @@
+page {
+    background: #f4f4f8;
+}
+
+.add_top {
+    background: #fff;
+    font-size: 32rpx;
+    display: flex;
+    align-items: center;
+    padding: 30rpx;
+    position: fixed;
+    height: 40rpx;
+    top: 0;
+    left: 0;
+    width: 690rpx;
+    color: rgb(42,42,42);
+}
+
+.objective {
+    width: 23%;
+}
+
+.add_top_right {
+    width: 77%;
+    height: 60rpx;
+    background: rgb(244,244,248);
+    border-radius: 5rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 20rpx;
+    justify-content: space-between;
+    position: relative;
+}
+
+.add_top_right_bg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 14rpx solid transparent;
+    border-right: 14rpx solid transparent;
+    border-top: 14rpx solid rgb(42,42,42);
+}
+
+.add_info {
+    margin: 30rpx 30rpx 20rpx;
+    background: #fff;
+    font-size: 32rpx;
+    border-radius: 10rpx;
+}
+
+.add_info:first-child {
+    margin-top: 0;
+}
+
+.img_plus {
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.img_plustoux {
+    height: 110rpx;
+    width: 110rpx;
+}
+
+.add_info_item {
+    display: flex;
+    padding: 30rpx;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    color: rgb(51,51,51);
+    letter-spacing: 2rpx;
+    width: 630rpx;
+    font-size: 32rpx;
+}
+
+.add_info_item_right {
+    display: flex;
+    align-items: center;
+    color: rgb(153,153,153);
+    font-size: 28rpx;
+    text-align: right;
+    position: relative;
+}
+
+.add_info_item_left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.rightbg_img {
+    height: 68rpx;
+    width: 68rpx;
+    position: relative;
+    border: 1rpx solid rgb(230,230,230);
+    margin-left: 20rpx;
+}
+
+.rightbg_imgtoux {
+    height: 110rpx;
+    width: 110rpx;
+    position: relative;
+}
+
+.line {
+    position: absolute;
+    width: 92.5%;
+    height: 2rpx;
+    background: rgb(226,225,230);
+    left: 30rpx;
+    bottom: 0;
+}
+
+.add_bottom {
+    height: 130rpx;
+    width: 100%;
+    background: rgb(255,255,255);
+    box-shadow: 0 -5rpx 10rpx 0 rgba(0,0,0,0.05);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.submit {
+    width: 690rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    background: rgb(210,26,18);
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    box-shadow: 0 5rpx 15rpx 0 rgba(210,26,18,0.15);
+    border-radius: 45rpx;
+    font-size: 32rpx;
+}
+
+.submitcolor {
+    color: #666;
+    background: #efeff4;
+}
+
+.img_choose_01 {
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 18rpx;
+}
+
+.add_info_item_choose {
+    display: flex;
+    align-items: center;
+    flex: 0 0 33.33333%;
+}
+
+.add_info_item_choose:nth-last-child(2) {
+    margin-top: 10rpx;
+}
+
+.add_info_item_choose:nth-child(2),.add_info_item_choose:nth-child(5) {
+    justify-content: center;
+}
+
+.add_info_item_choose:nth-child(3) {
+    justify-content: flex-end;
+}
+
+.add_info_item_choose_seale {
+    display: flex;
+    align-items: center;
+    flex: 0 0 50%;
+}
+
+.add_info_item_choose_account {
+    display: flex;
+    align-items: center;
+    flex: 0 0 33.3%;
+}
+
+.select {
+    position: absolute;
+    right: 4rpx;
+    top: 149%;
+    display: none;
+    z-index: 3;
+    width: 170rpx;
+    height: 180rpx;
+    text-align: center;
+    font-size: 32rpx;
+}
+
+.select2 {
+    height: 240rpx;
+}
+
+.select_bg {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.select_item {
+    height: 33.3%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.select_item2 {
+    height: 25%;
+}
+
+.triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 16rpx solid transparent;
+    border-right: 16rpx solid transparent;
+    border-bottom: 16rpx solid #fff;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -16rpx;
+}
+
+.boder_img {
+    width: 172rpx;
+    height: 214rpx;
+    position: absolute;
+    left: 0;
+    top: -22rpx;
+    z-index: -1;
+}
+
+.boder_img2 {
+    height: 274rpx;
+}
+
+@-webkit-keyframes selectanim {
+    0% {
+        top: 50%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+@keyframes selectanim {
+    0% {
+        top: 50%;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+.selecttoast {
+    display: block;
+}
+
+.selectcategorytoast {
+    display: block;
+}
+
+.boder_img_two {
+    width: 170rpx;
+    height: 154rpx;
+}
+
+input {
+    color: rgb(42,42,42);
+}
+
+.img_bg_vague {
+    position: fixed;
+    left: 0;
+    z-index: 2;
+}
+
+.button_bototm_center {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    top: 0;
+    left: 0;
+}
+
+.toast {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 5;
+    display: none;
+}
+
+.sumbit_toast {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 6;
+    display: none;
+}
+
+.submitcontent {
+    width: 100%;
+    height: 76rpx;
+    position: absolute;
+    top: 132rpx;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.sumbit_toast_bg {
+    position: absolute;
+    height: 320rpx;
+    width: 570rpx;
+    background: rgb(255,255,255);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 20rpx;
+    text-align: center;
+    font-size: 30rpx;
+    padding: 60rpx 0 0rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sumbitsuccess {
+    font-size: 34rpx;
+    font-weight: 700;
+}
+
+.know {
+    color: rgb(210,26,18);
+    height: 100rpx;
+    line-height: 100rpx;
+    border-top: 1rpx solid #eeedf2;
+}
+
+.toast1 {
+    display: block;
+}
+
+.toast2 {
+    display: block;
+}
+
+.toast3 {
+    display: block;
+}
+
+.submitcontentfail {
+    width: 100%;
+    height: 76rpx;
+    line-height: 76rpx;
+    margin: 50rpx auto;
+}
+
+.icn_face {
+    width: 32rpx;
+    height: 28rpx;
+    margin-right: 15rpx;
+}
+
+.xinghao {
+    color: rgb(210,26,18);
+    margin-right: 10rpx;
+    display: flex;
+    padding-top: 15rpx;
+}
+
+.other {
+    font-size: 32rpx;
+    color: rgb(51,51,51);
+    margin: 0 30rpx 0;
+}
+
+.other_textarea {
+    height: 300rpx;
+    width: 690rpx;
+    border-radius: 10rpx;
+    margin: 30rpx;
+    background: #fff;
+}
+
+.other_textarea textarea {
+    background: #fff;
+    height: 240rpx;
+    width: 600rpx;
+    border-radius: 10rpx;
+    padding: 30rpx;
+}
+
+.uploadotherimg_bg {
+    font-size: 28rpx;
+    color: rgb(153,153,153);
+    letter-spacing: 1rpx;
+    margin: 0 30rpx;
+    padding-left: 30rpx;
+}
+
+.other_list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.uploadotherimg_bg_plus {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 5rpx;
+    background: #fff;
+    position: relative;
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+}
+
+.uploadotherimg_bg_plus:nth-last-child(1) {
+    margin-right: 0;
+}
+
+.othericontoux {
+    width: 120rpx;
+    height: 120rpx;
+    border-radius: 5rpx;
+}
+
+.btn_delete_black {
+    width: 20rpx;
+    height: 20rpx;
+    position: absolute;
+    right: 10rpx;
+    bottom: 10rpx;
+}
+
+.uploadotherimg_bg_plus_del {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.toast4 {
+    display: block;
+}
+
+.img_WeChat_toast_white_bottom {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color: rgb(153,153,153);
+    height: 100rpx;
+    line-height: 100rpx;
+    border-top: 1rpx solid #eeedf2;
+}
+
+.img_WeChat_toast_white_bottom view {
+    width: 50%;
+    height: 100%;
+}
+
+.img_WeChat_toast_white_bottom view:nth-last-child(1) {
+    color: rgb(210,26,18);
+    border-left: 1rpx solid #eeedf2;
+}

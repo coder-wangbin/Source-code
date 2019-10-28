@@ -1,0 +1,92 @@
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      搜索
+      <image bindtap="gotoindex" class="back_img_nav" mode="aspectFit" src="/assets/arrow-left.png"></image>
+        </view>
+    </view>
+    <view class="search_index">
+        <input bindconfirm="getinputconfirm" bindinput="getinputvalue" placeholder="请输入产品名称或公司名" value="{{search}}"></input>
+        <image class="icn_search" src="/assets/icn_search.png"></image>
+        <view bindtap="getinput" class="serach" data-search="{{search}}">搜索</view>
+    </view>
+    <view class="hotsearch" wx:if="{{search==''}}">
+        <view class="hotsearch_top">
+            <image class="icn_search_hot" src="/assets/icn_search_hot.png"></image>
+            <view>热门搜索</view>
+        </view>
+        <view class="HotSearchWord">
+            <view bindtap="sumbitserch" class="HotSearchWord_item" data-item="{{item}}" wx:for="{{HotSearchWord}}" wx:key="{{HotSearchWord}}">{{item}}</view>
+        </view>
+    </view>
+    <view class="no_search" wx:if="{{listobj[targetobjall]==''&&search_true}}">
+        <image class="img_nothing" src="/assets/img_nothing.png"></image>
+        <view>无搜索结果~</view>
+        <button bindtap="gotoindex" wx:if="{{target==0}}">返回首页</button>
+    </view>
+    <view class="classify" wx:if="{{search!=''&&listobj[targetobjall]&&search_true}}">
+        <view bindtap="chooseclassify" class="classify_list" data-target="{{item.target}}" data-targetobj="{{item.targetobj}}" wx:for="{{classify}}" wx:key="{{classify}}">
+            <view class="classify_item {{item.target==target?'classify_itemcolor':''}}">{{item.name}}</view>
+            <view class="classify_line" wx:if="{{item.target==target}}"></view>
+        </view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="worldOnReach1" class="bg-gray overflow" scrollTop="{{scrollTop}}" style="height:calc(100vh - {{navH}});position:absolute;bottom:0;top:{{navH+80}}px" wx:if="{{search!=''&&listobj[targetobjall]!=''&&search_true}}">
+        <view class="hidden">
+            <view class="middle">
+                <view class="bottom">
+                    <view bindtap="gotoinfo" class="list_bottom" data-id="{{item.id}}" data-uid="{{item.auth_uid}}" wx:for="{{listobj[targetobjall]}}" wx:key="{{list}}">
+                        <view class="icn_01_one" wx:if="{{item.target!=''}}">
+                            <image class="icn_01_one" src="{{item.icon}}"></image>
+                            <image class="img_v_01_authentication" src="/assets/img_v_01.png" wx:if="{{item.is_authentication==1}}"></image>
+                        </view>
+                        <view class="list_bottom_top" wx:if="{{item.target!=''}}">
+                            <view class="list_bottom_name">
+                                <view class="list_bottom_name_list">
+                                    <view class="list_bottom_name_game">{{item.name}}</view>
+                                    <view style="width:30rpx">
+                                        <image class="img_sell_01" src="{{item.target}}"></image>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="list_bottom_type">
+                                <view>{{item.item}}</view>
+                            </view>
+                            <view class="list_bottom_info">了解详情
+                <text style="margin-elft:10rpx">></text>
+                            </view>
+                        </view>
+                        <view class="list_bottom_right {{item.new_target==3?'right_flex':''}}" wx:if="{{item.target!=''}}">
+                            <view class="list_bottom_right_num ">{{item.title_top_new}}</view>
+                            <view class="list_bottom_right_day ">{{item.title_bottom_new}}</view>
+                        </view>
+                        <view data-item="{{item.target}}" wx:if="{{item.target==''}}">
+                            <view class="otherlist_bottom_list_item ">
+                                <view>{{item.company_name}}</view>
+                                <image class="img_v_01_authentication " src="/assets/img_v_01.png " wx:if="{{item.is_authentication==1}}"></image>
+                                <view class="otherlist_bottom_list_time ">{{item.create_time}}</view>
+                            </view>
+                            <view class="connection ">
+                                <view>联 系 人：</view>
+                                <view class="nickName ">{{item.nickName}}</view>
+                            </view>
+                            <view class="connection tel ">
+                                <view>联系电话：</view>
+                                <view class="nickName ">{{item.phone}}</view>
+                            </view>
+                            <view class="otherdec ">
+                                <view class="otherdec_bg ">
+                  {{item.describe_text}}
+                </view>
+                                <view class="demand_substr2 " style="color:rgb(210,26,18) ">需求详情></view>
+                            </view>
+                        </view>
+                        <view class="line "></view>
+                        <form bindsubmit="formSubmit" class="button_bototm_center " reportSubmit="true ">
+                            <button class="button_bototm_center " formType="submit"></button>
+                        </form>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>

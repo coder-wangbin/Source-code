@@ -1,0 +1,23 @@
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px;">
+        <view class="nav-title">
+      绑定手机
+      <image bindtap="back" class="back_img_nav" mode="aspectFit" src="/assets/arrow-left.png"></image>
+        </view>
+    </view>
+    <scroll-view scrollY class="bg-gray" style="height:calc(100vh - {{navH}});position:absolute;bottom:0;top:{{navH}}px">
+        <view class="hidden">
+            <view class="top" style="border-radius: 10rpx 10rpx 0 0;">
+        {{mobile}}
+      </view>
+            <view class="top bottom">
+                <view class="line"></view>
+                <input bindblur="getnum" placeholder="请输入手机验证码" placeholderStyle="color:rgb(153,153,153)" value="{{verificationnum}}"></input>
+                <view bindtap="getverification" class="verification {{verificationtrue}}">{{verification}}</view>
+            </view>
+            <view class="bindbottom">
+                <button bindtap="submit" class="bindbottom_button {{submitcomplete?'submitcolor':''}}">立即绑定</button>
+            </view>
+        </view>
+    </scroll-view>
+</view>

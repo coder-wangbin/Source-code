@@ -1,0 +1,225 @@
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px;position:fixed">
+        <view class="nav-title">
+      填写信息
+      <image bindtap="back" class="back_img_nav" mode="aspectFit" src="/assets/arrow-left.png"></image>
+        </view>
+    </view>
+    <view class="add_top" style="top:{{navH}}px" wx:if="{{topitem}}">
+        <image class="icn_face" src="/assets/icn_face.png"></image>
+        <view>欢迎来到【{{topitem}}】平台，请填写以下内容~</view>
+    </view>
+    <scroll-view scrollY class="bg-gray overflow" style="height:calc(100vh - {{navH}}-130px);position:absolute;top:{{navH+60}}px;bottom:130rpx;" wx:if="{{topid}}">
+        <view class="hidden" style="position:relative" wx:if="{{topid!=4}}">
+            <view class="add_info" data-id="{{topid}}" wx:if="{{topid!=4}}">
+                <view class="add_info_item">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>头像icon</view>
+                    </view>
+                    <view class="add_info_item_right">
+                        <view bindtap="upload" wx:if="{{touxiangicon=='/assets/img_plus.png'}}">尺寸比例1:1</view>
+                        <view bindtap="upload" class="{{touxiangicon=='/assets/img_plus.png'?'rightbg_img':'img_plustoux'}}">
+                            <image class="{{touxiangicon=='/assets/img_plus.png'?'img_plus':'img_plustoux'}}" src="{{touxiangicon}}" style="  border-radius: 20rpx;"></image>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>小程序码</view>
+                    </view>
+                    <view class="add_info_item_right">
+                        <view bindtap="uploaderwema" wx:if="{{erweimaicon=='/assets/img_plus.png'}}">尺寸比例1:1</view>
+                        <view bindtap="uploaderwema" class="{{erweimaicon=='/assets/img_plus.png'?'rightbg_img':'img_plustoux'}}">
+                            <image class="{{erweimaicon=='/assets/img_plus.png'?'img_plus':'img_plustoux'}}" src="{{erweimaicon}}" style="  border-radius: 20rpx;"></image>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>名称</view>
+                    </view>
+                    <view class="add_info_item_right">
+                        <input bindblur="submitname" placeholder="请输入名称" value="{{name}}"></input>
+                    </view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>类别</view>
+                    </view>
+                    <view class="add_info_item_right">
+                        <view bindtap="seletopcategory" class="add_top_right_bg">
+                            <view style="color:rgb(42, 42, 42)">{{categorygoal}}</view>
+                            <view class="triangle" style="margin-left:20rpx;"></view>
+                        </view>
+                        <view class="select {{topid=='2'?'select2':''}} {{selectcategorytoast}}">
+                            <view class="select_bg" style="font-size:28rpx;">
+                                <image class="boder_img {{topid=='2'?'boder_img2':''}}" data-id="{{topid}}" src="{{topid=='2'?'/assets/border2.png':'/assets/boder.png'}}"></image>
+                                <view catchtap="selctcategory" class="select_item {{topid=='2'?'select_item2':''}}" data-id="{{item.id}}" data-item="{{item.item}}" style="color:{{categoryid==item.id?'rgb(210,26,18)':'rgb(51,51,51)'}}" wx:for="{{select_item_category}}" wx:key="{{select_item_category}}">{{item.item}}</view>
+                            </view>
+                        </view>
+                    </view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item">
+                    <view class="add_info_item_left" style="width:30%">介绍</view>
+                    <view class="add_info_item_right">
+                        <input bindblur="submitintruduce" placeholder="简单描述产品特点" value="{{intruduce}}"></input>
+                    </view>
+                </view>
+            </view>
+            <view class="add_info" wx:if="{{topid==1||topid==2}}">
+                <view class="add_info_item" style="justify-content:flex-start">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>{{topitem}}规模</view>
+                    </view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item" style="justify-content:flex-start;flex-wrap: wrap;">
+                    <view bindtap="chooseseale" class="add_info_item_choose_seale " data-id="{{item.id}}" wx:for="{{seale}}" wx:key="{{seale}}">
+                        <image class="img_choose_01" src="{{sealeid==item.id?'/assets/img_choose_02.png':'/assets/img_choose_01.png'}}"></image>
+                        <view>{{item.item}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="add_info" wx:if="{{topid==3}}">
+                <view class="add_info_item">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>日活/DAU</view>
+                    </view>
+                    <view class="add_info_item_right">
+                        <input bindblur="sumitbuydayau" placeholder="" type="digit" value="{{buydayau}}"></input>
+                        <view style="color:rgb(102,102,102);margin-left:10rpx;">万</view>
+                    </view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>累计用户</view>
+                    </view>
+                    <view class="add_info_item_right">
+                        <input bindblur="sumitallpelnum" placeholder="" type="digit" value="{{allpelnum}}"></input>
+                        <view style="color:rgb(102,102,102);margin-left:10rpx;">万</view>
+                    </view>
+                </view>
+            </view>
+            <view class="add_info" wx:if="{{topid==1}}">
+                <view class="add_info_item" style="justify-content:flex-start">
+                    <view>
+            选择买量方式
+          </view>
+                    <view style="color:rgb(153,153,153)">（可多选）</view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item" style="justify-content:flex-start;flex-wrap: wrap;">
+                    <view bindtap="choosebuy" class="add_info_item_choose" data-id="{{item.id}}" wx:for="{{buyData}}" wx:key="{{buyData}}">
+                        <image class="img_choose_01" src="{{item.check?'/assets/img_choose_02.png':'/assets/img_choose_01.png'}}"></image>
+                        <view>{{item.item}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class="add_info" wx:if="{{topid==1||topid==2}}">
+                <view class="add_info_item" style="justify-content:flex-start">
+                    <view class="add_info_item_left">
+                        <view class="xinghao">*</view>
+                        <view>结算方式</view>
+                    </view>
+                    <view class="line"></view>
+                </view>
+                <view class="add_info_item" style="justify-content:flex-start;flex-wrap: wrap;">
+                    <view bindtap="chooseaccount" class="add_info_item_choose" data-id="{{item.id}}" wx:for="{{account}}" wx:key="{{account}}">
+                        <image class="img_choose_01" src="{{accountid==item.id?'/assets/img_choose_02.png':'/assets/img_choose_01.png'}}"></image>
+                        <view>{{item.item}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="hidden" wx:if="{{topid==4}}">
+            <view class="add_info_item_left other">
+                <view class="xinghao">*</view>
+                <view>需求描述</view>
+            </view>
+            <view class="other_textarea">
+                <textarea bindblur="bindTextAreaBlur" placeholder="请输入您的具体需求" placeholderStyle="color:rgb(153,153,153);font-size:28rpx;" value="{{describe_text}}"></textarea>
+            </view>
+            <view class="uploadotherimg_bg">
+                <view class="uploadotherimg_bg_font">上传图片</view>
+                <view class="other_list">
+                    <view bindtap="uploadotherimg" class="uploadotherimg_bg_plus" data-id="{{index}}" wx:for="{{otherimgarr}}" wx:key="{{otherimgarr}}">
+                        <image class="othericontoux" src="{{item}}"></image>
+                        <view catchtap="delotherimg" class="uploadotherimg_bg_plus_del" data-id="{{index}}">
+                            <image class="btn_delete_black" src="/assets/btn_delete_black.png"></image>
+                        </view>
+                    </view>
+                    <view bindtap="uploadotherimg" class="uploadotherimg_bg_plus" wx:if="{{otherimgarr.length<5}}">
+                        <image class="img_plus" src="/assets/img_plus.png"></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <image class="img_bg_vague" src="{{img_bg_vague}}" style="top:{{navH}}px;width:{{index1_bgwidth}};height:{{index1_bgheight}}" wx:if="{{topid==0}}"></image>
+    <view class="add_bottom" wx:if="{{topid!=0}}">
+        <view bindtap="{{submitcomplete?'':'submit'}}" class="{{submitcomplete?'submit submitcolor':'submit'}}">
+            <view>提交</view>
+            <form bindsubmit="formSubmit" class="button_bototm_center" reportSubmit="true">
+                <button class="button_bototm_center" formType="submit"></button>
+            </form>
+        </view>
+    </view>
+    <view class="toast  {{toast1}}"></view>
+    <view class="sumbit_toast {{toast1}}">
+        <view class="sumbit_toast_bg">
+            <view class="sumbitsuccess">提交成功</view>
+            <view class="submitcontent">
+                <view>提交的内容将在审核通过后展示在首</view>
+                <view style="margin-top:5rpx;">页，如需其他操作请联系官方微信</view>
+            </view>
+            <view bindtap="know" class="know">我知道了</view>
+        </view>
+    </view>
+    <view class="toast  {{toast2}}"></view>
+    <view class="sumbit_toast {{toast2}}">
+        <view class="sumbit_toast_bg">
+            <view class="sumbitsuccess">提交失败</view>
+            <view class="submitcontentfail">
+        抱歉，刚刚网络开小差了~
+      </view>
+            <view bindtap="failknow" class="know">我知道了</view>
+        </view>
+    </view>
+    <view class="toast  {{toast3}}"></view>
+    <view class="sumbit_toast {{toast3}}">
+        <view class="sumbit_toast_bg">
+            <view class="sumbitsuccess">温馨提示</view>
+            <view class="submitcontent" style="color:rgb(0,0,0)">
+                <view>请先前往个人中心完善个人信息，</view>
+                <view style="margin-top:5rpx;">才可以发布信息哦~</view>
+            </view>
+            <view bindtap="gotomine" class="know">立即前往</view>
+        </view>
+    </view>
+    <view class="toast  {{toast4}}"></view>
+    <view class="sumbit_toast {{toast4}}">
+        <view class="sumbit_toast_bg">
+            <view class="sumbitsuccess">温馨提示</view>
+            <view class="submitcontent" style="color:rgb(0,0,0)">
+                <view>您本次修改的内容需要重新审核</view>
+                <view style="margin-top:5rpx;">是否确认提交</view>
+            </view>
+            <view class="img_WeChat_toast_white_bottom">
+                <view bindtap="cancel">取消</view>
+                <view bindtap="sure" data-id="{{id}}">确定</view>
+            </view>
+        </view>
+    </view>
+</view>

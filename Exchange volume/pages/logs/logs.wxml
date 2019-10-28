@@ -1,0 +1,130 @@
+<import src="../../common/toBar.wxml"></import>
+<view class="container">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      我的收藏
+      <image bindtap="back" class="back_img_nav" mode="aspectFit" src="/assets/arrow-left.png"></image>
+        </view>
+    </view>
+    <view class="empty" wx:if="{{list.length==0}}">
+        <view class="empty_bg_bg">
+            <view class="empty_bg">
+                <image class="img_nothing" src="/assets/img_nothing.png"></image>
+                <view class="empty_font">空空如也~</view>
+                <view bindtap="gotoadd" class="add">去添加</view>
+            </view>
+        </view>
+    </view>
+    <scroll-view scrollY bindscrolltolower="worldOnReach1" class="bg-gray overflow" style="height:calc(100vh - {{navH}});position:absolute;bottom:0;top:{{navH}}px" wx:if="{{list}}">
+        <view class="hidden">
+            <view class="middle">
+                <view class="bottom">
+                    <view class="list_bottom" wx:for="{{list}}" wx:key="{{list}}">
+                        <view bindtap="gotoinfo" class="icn_01_one" data-id="{{item.id}}" data-uid="{{item.auth_uid}}" wx:if="{{item.target!=''}}">
+                            <image class="icn_01_one" src="{{item.state==0?'/assets/img_gray.png':item.icon}}"></image>
+                            <image class="img_v_01_authentication" src="/assets/img_v_01.png" wx:if="{{item.is_authentication==1}}"></image>
+                        </view>
+                        <view bindtap="gotoinfo" class="list_bottom_top" data-id="{{item.id}}" data-uid="{{item.auth_uid}}" wx:if="{{item.target!=''&&item.state!=0}}">
+                            <view class="list_bottom_name">
+                                <view class="list_bottom_name_list">
+                                    <view class="list_bottom_name_game">{{item.name}}</view>
+                                    <view style="width:30rpx">
+                                        <image class="img_sell_01" src="{{item.target}}"></image>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="list_bottom_type">
+                                <view>{{item.type}}</view>
+                            </view>
+                            <view class="list_bottom_info">
+                                <view class="list_bottom_info_item" wx:for="{{item.my_release}}" wx:for-item="items" wx:key="{{item.my_release}}">
+                                    <view wx:if="{{items!=''}}">{{items}}</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view bindtap="deletelog" class="list_bottom_top" data-id="{{item.id}}" wx:if="{{item.target!=''&&item.state==0}}">
+                            <view class="list_bottom_name">
+                                <view class="list_bottom_name_list">
+                                    <view class="list_bottom_name_game">XXXXX</view>
+                                    <view style="width:30rpx">
+                                        <image class="img_sell_01" src="/assets/img_gray_nothing.png"></image>
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="list_bottom_type">
+                                <view>XXXX</view>
+                            </view>
+                            <view class="list_bottom_info">
+                                <view class="list_bottom_info_item" wx:for="1" wx:key="{{item.my_release}}">
+                                    <view>XXXX</view>
+                                </view>
+                            </view>
+                        </view>
+                        <view bindtap="deletelog" class="list_bottom_right" data-id="{{item.id}}" wx:if="{{item.target!=''}}">
+                            <image class="img_star_gray" src="/assets/img_star_gray.png"></image>
+                            <view class="list_bottom_right_day">已收藏</view>
+                            <form bindsubmit="formSubmit" class="button_bototm_center" reportSubmit="true">
+                                <button class="button_bototm_center" formType="submit"></button>
+                            </form>
+                        </view>
+                        <view bindtap="gotoinfo" data-id="{{item.id}}" wx:if="{{item.target==''}}">
+                            <view class="otherlist_bottom_list_item">
+                                <view>{{item.company_name}}</view>
+                                <image class="img_v_01_authentication" src="/assets/img_v_01.png" wx:if="{{item.is_authentication==1}}"></image>
+                                <view catchtap="deletelog" class="othercollect" data-id="{{item.id}}" style="color: rgb(153, 153, 153);font-size:24rpx">
+                                    <image class="img_star_gray" src="/assets/img_star_gray.png"></image>
+                                    <view>已收藏</view>
+                                </view>
+                            </view>
+                            <view class="connection">
+                                <view>联 系 人：</view>
+                                <view class="nickName">{{item.nickName}}</view>
+                            </view>
+                            <view class="connection tel">
+                                <view>联系电话：</view>
+                                <view class="nickName">{{item.phone}}</view>
+                            </view>
+                            <view class="otherdec">
+                                <view class="otherdec_bg">
+                  {{item.describe_text}}
+                </view>
+                                <view class="demand_substr2" style="color:rgb(210,26,18)">需求详情></view>
+                            </view>
+                        </view>
+                        <view class="line"></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="img_WeChat_toast {{toast}}"></view>
+    <view class="img_WeChat_toast_white {{toast}}">
+        <view class="img_WeChat_toast_white_bg">
+            <view class="img_WeChat_toast_white_top">
+                <view>您是否确定要移除该条收藏？
+        </view>
+            </view>
+            <view class="img_WeChat_toast_white_bottom">
+                <view bindtap="cancel">取消</view>
+                <view bindtap="sure" data-id="{{id}}">确定</view>
+            </view>
+        </view>
+    </view>
+    <view class="post_bg {{toast1}}" style="top:{{navH+15}}px">
+        <view>
+            <image bindtap="colsepost" class="btn_close_02" src="/assets/btn_close_02.png"></image>
+            <image class="img_share_01" src="/assets/img_share_01.png"></image>
+            <button class="img_share_01" openType="share" style="opacity:0"></button>
+            <image bindtap="showfriend" class="img_share_01 img_share_02" src="/assets/img_share_02.png"></image>
+        </view>
+    </view>
+    <view class="img_WeChat_toast {{toast1}}"></view>
+    <view class="img_WeChat_toast {{friendtoast}}"></view>
+    <view class="friends_bg {{friendtoast}}" style="top:{{navH}}px">
+        <view>
+            <image bindlongpress="sharefriendother" bindtap="sharefriend" class="img_CSsj" data-src="{{pyqsrc}}" src="{{pyqsrc}}"></image>
+            <image class="gif_text" src="/assets/gif_text.png"></image>
+            <image bindtap="shareclose" class="btn_close_02 friends_bg_close" src="/assets/btn_close_02.png"></image>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,16 @@
+<import src="../../common/toBar.wxml"></import>
+<view class="container" wx:if="{{classify}}">
+    <view class="nav bg-white" style="height:{{navH}}px">
+        <view class="nav-title">
+      发布
+    </view>
+    </view>
+    <image class="img_bg_category" src="/assets/img_bg_category.png" style="top:{{navH}}px"></image>
+    <view class="container_bottom">
+        <view wx:if="{{classify[4].src!=''}}">- 请选择类别 -</view>
+        <view class="list">
+            <image bindtap="gotoadd" class="classifyimg" data-id="{{item.id}}" src="{{item.src}}" wx:for="{{classify}}" wx:key="{{classify}}"></image>
+        </view>
+    </view>
+    <template is="tabbar" data="{{tabbar:tabbar}}"></template>
+</view>

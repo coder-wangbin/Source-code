@@ -1,0 +1,74 @@
+.container {
+    position: fixed;
+    background: #f4f4f8;
+}
+
+.top {
+    height: 110rpx;
+    display: flex;
+    align-items: center;
+    width: 626rpx;
+    padding: 0 32rpx;
+    margin: 30rpx 30rpx 0;
+    background: #fff;
+    font-size: 28rpx;
+    letter-spacing: 2rpx;
+    position: relative;
+}
+
+.line {
+    width: 92.5%;
+    height: 1rpx;
+    background: #e9e8ec;
+    position: absolute;
+    left: 33rpx;
+    top: 0;
+}
+
+.bottom {
+    margin: 0 30rpx;
+    border-radius: 0 0 10rpx 10rpx;
+    justify-content: space-between;
+}
+
+.verification {
+    width: 160rpx;
+    height: 60rpx;
+    border-radius: 30rpx;
+    border: 1rpx solid rgb(226,225,230);
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 24rpx;
+    color: rgb(153,153,153);
+}
+
+.verificationtrue {
+    border: 1rpx solid rgb(210,26,18);
+    color: rgb(210,26,18);
+}
+
+.bindbottom {
+    height: 90rpx;
+    width: 690rpx;
+    padding: 20rpx 30rpx;
+    background: #fff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.bindbottom_button {
+    background: rgb(210,26,18);
+    box-shadow: 0 5rpx 15rpx 0rpx rgba(210,26,18,0.15);
+    border-radius: 45rpx;
+    color: #fff;
+    height: 90rpx;
+    line-height: 90rpx;
+    width: 690rpx;
+    font-size: 32rpx;
+}
+
+.submitcolor {
+    color: #666;
+    background: #efeff4;
+}
